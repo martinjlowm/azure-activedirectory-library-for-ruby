@@ -131,7 +131,7 @@ module ADAL
     def validated_dynamically?
       logger.verbose("Attempting instance discovery at: #{discovery_uri}.")
       http_response = Net::HTTP.get(discovery_uri)
-      if http_response.nil?
+      if http_response.nil? || http_response.empty?
         logger.error('Dynamic validation received no response from endpoint.')
         return false
       end
